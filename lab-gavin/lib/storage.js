@@ -60,15 +60,15 @@ storage.delete = function(schema, itemId) {
 };
 
 
-storage.put = function(schema, item) {
+storage.put = function(schema, item, itemId) {
   debug('#storage.update');
   return new Promise(function(resolve, reject) {
     if(!schema) return reject(new Error('cannot update; schema required'));
     if(!item) return reject(new Error('cannot update; item required'));
 
     let json = JSON.stringify(item);
-
-    return fs.writeFileProm(`${__dirname}/../data/${schema}/${item._id}.json`, json)
+    item._id = itemId;
+    return fs.writeFileProm(`${__dirname}/../data/${schema}/${itemId}.json`, json)
       .then(() => resolve(json))
       .catch(console.error);
   });

@@ -63,7 +63,7 @@ module.exports = function(router) {
       return;
     }
     let updateToy = req.body;
-    storage.put('toy', updateToy)
+    storage.put('toy', updateToy, req.url.query._id)
       .then(toy => response.sendJson(res, 204, toy))
       .catch(err => {
         console.error(err);
