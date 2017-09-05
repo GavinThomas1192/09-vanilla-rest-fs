@@ -134,11 +134,11 @@ describe('#ROUTE-TOY-TEST', function() {
           });
       });
 
-      test('Should respond with no body content for a put request with a valid body', done => {
+      test('Should respond with 204 with a valid body', done => {
         superagent.put('localhost:3000/api/toy')
           .query({'_id': this.toy._id})
           .send({
-            'name': 'PowerRangerRedefined',
+            'name': 'PowerRangerBlueToes',
             'desc': 'Totally Awesome Redefined Red Ranger',
             '_id': this.toy._id,
           })
